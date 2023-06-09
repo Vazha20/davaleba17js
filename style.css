@@ -101,3 +101,38 @@
     text-decoration-line: underline;
     cursor: pointer;
 }
+.productBorder{
+   
+    background-color: rgba(88, 81, 81, 0.14);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(74, 72, 94, 0.6);
+    padding: 11px;
+    border-style: none;
+  
+    
+
+}
+.dropdown{
+    text-align: center;
+    background-color: white;
+    border-radius: 3px;
+}
+.cart{
+    display: flex;
+    align-items: center;
+}
+.cart p{
+    font-size:x-large;
+    margin-left: 20px;
+    margin-top: 14px;
+    align-items: center;
+}
+.navbar button {
+    margin-top: auto;
+}
+.topdown p{
+    margin-top: 10px;
+}
+#nm{
+    background-color: aqua;
+}

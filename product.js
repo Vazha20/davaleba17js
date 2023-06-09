@@ -54,16 +54,16 @@ get(ref(database, "products/"))
       const data = snapshot.val();
       Object.keys(data).map((product) => {
         const productEl = document.createElement("div");
-        productEl.classList.add("col-3");
+        productEl.classList.add("col-4");
         productEl.innerHTML = `
        
-        <div class="mt-5">
+        <div class="mt-5 productBorder">
             <div class="product_image">
                 <img src="${
                   data[product].img != "" && data[product].img != null
                     ? data[product].img
                     : "http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg"
-                }"  width="300px" alt="">
+                }"  width="250px" alt="">
             </div>
             <div class="product_info">
                 <div class="product_name">${data[product].name}</div>
@@ -73,8 +73,7 @@ get(ref(database, "products/"))
                 <div class="product_price"${data[product].color}</div>
                 <button class="btn btn-primary">Add to Cart</button>
             </div>
-            <div> add to cart empty </div>
-            </div>
+        </div>
            
            
             `;
