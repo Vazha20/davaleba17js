@@ -35,16 +35,27 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
+
+
+const addCart = document.getElementById("addCart");
+  addCart.style.display = "none";
+
+
+
 const Loading = (state) => {
   if (state == true) {
     const loader = document.getElementById("loader");
-    loader.classList.remove("d-none"); // Show the loader
+    loader.classList.remove("d-none");
   } else {
     const loader = document.getElementById("loader");
-    loader.classList.add("d-none"); // Hide the loader
+    loader.classList.add("d-none"); 
+    addCart.style.display= "";
   }
+
   console.log(state);
 };
+
+
 
 const product_container = document.getElementById("product_container");
 get(ref(database, "products/"))
@@ -52,7 +63,8 @@ get(ref(database, "products/"))
     if (snapshot.exists()) {
       Loading(true);
       const data = snapshot.val();
-      Object.keys(data).map((product) => {
+      Object.keys(data).map((product) => {         
+
         const productEl = document.createElement("div");
         productEl.classList.add("col-4");
         productEl.innerHTML = `
@@ -63,7 +75,7 @@ get(ref(database, "products/"))
                   data[product].img != "" && data[product].img != null
                     ? data[product].img
                     : "http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg"
-                }"  width="250px" alt="">
+                }"  width="244px" alt="">
             </div>
             <div class="product_info">
                 <div class="product_name">${data[product].name}</div>
@@ -71,7 +83,7 @@ get(ref(database, "products/"))
                 <div class="product_price">${data[product].brand}</div>
                 <div class="product_price">${data[product].category}</div>
                 <div class="product_price"${data[product].color}</div>
-                <button class="btn btn-primary">Add to Cart</button>
+                <button class="btn btn-primary clickToCart">Add to Cart</button>
             </div>
         </div>
            
@@ -100,3 +112,44 @@ get(ref(database, "products/"))
     console.error(error);
     alert(error);
   });
+
+  
+
+  const addProduct = document.getElementById("addProduct");
+addProduct.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "create.html";
+});
+
+
+const addToCartButtons = document.querySelectorAll(".clickToCart");
+const addCartContainer = document.getElementById("cartContainer");
+
+addToCartButtons.forEach(function(button) {
+  button.addEventListener("click", function() {
+    const productInfo = parentNode;
+    const productName = productInfo.querySelector(".product_name").textContent;
+    const productPrice = productInfo.querySelector(".product_price").textContent;
+
+    addToCart(productName, productPrice);
+  });
+});
+
+function addToCart(productName, productPrice) {
+  const cartItem = document.createElement("div");
+  cartItem.innerHTML = `
+    <div class="mt-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="product_name">${productName}</div>
+          <div class="product_price">${productPrice}</div>
+        </div>
+      </div>  
+    </div>
+  `;
+
+  addCartContainer.appendChild(cartItem);
+}
+
+
+
