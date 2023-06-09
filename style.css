@@ -136,6 +136,13 @@
 .navbar button {
     margin-top: auto;
 }
+.navbar p{
+    color: white;
+    font-size:xx-large
+}
+.primaryBtn{
+    padding: 10px;
+}
 .topdown{
     background-color: white;
     padding: 0px 10px;
@@ -161,4 +168,32 @@
     background-color: rgba(88, 81, 81, 0.14);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(74, 72, 94, 0.6);
+}
+#createBody{
+    background-color: #0e1830;   
+}
+.fontforcreate input{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 50px;
+    border-style: none;
+    padding: 10px;
+    color: #0e1830;
+}
+.fontforcreate ::placeholder{
+    color: #080710;
+}
+.seconderyBtn{
+    background-color: #ffffff;
+    color: #080710;
+    padding:  10px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border-style: none;
+}
+.create_title h3{
+    margin-left: 244px;
 }

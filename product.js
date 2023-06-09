@@ -120,18 +120,21 @@ addProduct.addEventListener("click", (e) => {
   e.preventDefault();
   window.location.href = "create.html";
 });
-
-
+       
 const addToCartButtons = document.querySelectorAll(".clickToCart");
-const addCartContainer = document.getElementById("cartContainer");
+const addCartContainer = document.getElementById("addCart");
+const cartCount = document.querySelector(".counter");
+
+let itemCount = 0;
 
 addToCartButtons.forEach(function(button) {
   button.addEventListener("click", function() {
-    const productInfo = parentNode;
+    const productInfo = this.parentNode;
     const productName = productInfo.querySelector(".product_name").textContent;
     const productPrice = productInfo.querySelector(".product_price").textContent;
 
     addToCart(productName, productPrice);
+    updateCartCount();
   });
 });
 
@@ -151,5 +154,8 @@ function addToCart(productName, productPrice) {
   addCartContainer.appendChild(cartItem);
 }
 
-
+function updateCartCount() {
+  itemCount++;
+  cartCount.textContent = itemCount;
+}
 
